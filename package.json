@@ -1,0 +1,20 @@
+{
+  "name": "run-the-world",
+  "version": "1.0.0",
+  "description": "Run the World is an app for holding real-time runs around the globe. It is my project for Coyotiv School of Software Engineering.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neslihankara/run-the-world.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/neslihankara/run-the-world/issues"
+  },
+  "homepage": "https://github.com/neslihankara/run-the-world#readme"
+}
