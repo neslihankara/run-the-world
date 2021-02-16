@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/neslihankara/run-the-world/issues"
   },
-  "homepage": "https://github.com/neslihankara/run-the-world#readme"
+  "homepage": "https://github.com/neslihankara/run-the-world#readme",
+  "dependencies": {
+    "uuid": "^8.3.2"
+  }
 }
