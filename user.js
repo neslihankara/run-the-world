@@ -1,8 +1,9 @@
 const RaceManager = require('./race-manager')
-
+const uuid = require('uuid').v4
 class User {
     isAdmitted = false
-
+    id = null 
+    
     constructor(name, age, gender) {
         this.name = name
         this.age = age
@@ -13,6 +14,7 @@ class User {
         if (RaceManager.admit(this, race)) {
             this.isAdmitted = true
             console.log(`you are admitted to ${race.name}`)
+            this.id = uuid()
         }
         else
         {
@@ -30,6 +32,10 @@ class User {
 
     endrace(race) {
         console.log("congrats!!")
+    }
+
+    get id() {
+        return this.id
     }
 }
 
