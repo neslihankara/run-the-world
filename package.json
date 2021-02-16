@@ -4,7 +4,9 @@
   "description": "Run the World is an app for holding real-time runs around the globe. It is my project for Coyotiv School of Software Engineering.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
