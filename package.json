@@ -21,5 +21,12 @@
   "homepage": "https://github.com/neslihankara/run-the-world#readme",
   "dependencies": {
     "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.20.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "prettier": "2.2.1"
   }
 }
