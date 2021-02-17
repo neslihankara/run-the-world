@@ -2,11 +2,23 @@
   "name": "run-the-world",
   "version": "1.0.0",
   "description": "Run the World is an app for holding real-time runs around the globe. It is my project for Coyotiv School of Software Engineering.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node index",
+    "start": "node src/index",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "lint": "lint-staged"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "lint-staged": {
+    "./**/*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   },
   "repository": {
     "type": "git",
@@ -20,6 +32,7 @@
   },
   "homepage": "https://github.com/neslihankara/run-the-world#readme",
   "dependencies": {
+    "superb": "^4.0.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
@@ -27,6 +40,8 @@
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-import": "^2.22.1",
-    "prettier": "2.2.1"
+    "husky": "^5.0.9",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1"
   }
 }
