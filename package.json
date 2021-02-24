@@ -13,7 +13,9 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "pug": "2.0.0-beta11",
-    "src": "^1.1.2"
+    "src": "^1.1.2",
+    "superb": "^4.0.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "eslint": "^7.2.0",
