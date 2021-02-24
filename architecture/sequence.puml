@@ -1,0 +1,10 @@
+@startuml
+
+actor user
+participant "User" as User
+participant "RaceManager" as RaceManager
+participant "Race" as Race
+
+
+
+@enduml

@@ -20,14 +20,10 @@ class Race {
 
   start() {
     // start the timer or km
-
-    console.log('get ready!')
   }
 
   end() {
     // end the timer or km
-
-    console.log('it is done!')
   }
 }
 
