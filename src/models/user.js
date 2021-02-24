@@ -1,5 +1,5 @@
 const uuid = require('uuid').v4
-const superb = require('superb')
+// const superb = require('superb') tba
 const RaceManager = require('./race-manager')
 
 class User {
@@ -16,10 +16,7 @@ class User {
   applyRace(race) {
     if (RaceManager.admit(this, race)) {
       this.isAdmitted = true
-      console.log(`you are admitted to ${race.name}!`)
       this.id = uuid()
-    } else {
-      console.log("not admitted, bio and race don't match")
     }
   }
 
@@ -29,19 +26,14 @@ class User {
     this.attemptedRaces.push(race)
   }
 
-  quitrace(race) {
-    console.log(this.attemptedRaces)
-    console.log(this.finishedRaces)
+  quitRace(race) {
+    // placeholder for unused param error
+    return race.name
   }
 
-  endrace(race) {
-    console.log(`congrats!! you are ${superb.random()}`)
-
+  endRace(race) {
     this.attemptedRaces.splice(this.attemptedRaces.indexOf(`${race}`), 1)
     this.finishedRaces.push(race)
-
-    console.log(this.attemptedRaces)
-    console.log(this.finishedRaces)
   }
 }
 
