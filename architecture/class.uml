@@ -1,0 +1,37 @@
+@startuml
+class Race {
+    name: string
+    kilometers: number
+    terrain: string
+    requiredRunnerAge: number
+    requiredRunnerGender: string
+    startTime: Date
+    duration: number
+    runners: [Runner]
+
+    start()
+    end()
+}
+
+class User {
+    name: string
+    age: number
+    gender: string
+    isAdmitted: false
+    id: null
+    finishedRaces: [Race]
+    attemptedRaces: [Race]
+
+    applyRace(race: Race)
+    joinRace(race: Race)
+    quitRace(race: Race)
+    endRace(race: Race)
+}
+
+class RaceManager {
+    admit(user: User, race: Race)
+}
+
+User --> RaceManager
+
+@enduml
