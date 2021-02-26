@@ -9,8 +9,13 @@ class User {
     this.gender = gender
     this.isAdmitted = false
     this.id = null
+    this.createdRaces = []
     this.finishedRaces = []
     this.attemptedRaces = []
+  }
+
+  createRace(race) {
+    this.createdRaces.push(race)
   }
 
   applyRace(race) {

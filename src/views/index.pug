@@ -1,5 +1,13 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div
+    a.pref(href='/profile') Profile
+  div
+    a.main(href='/') RACE!
+    div
+      a.around(href='/browse') Browse
+    div
+      a.around(href='/create') Create
+    div
+      a.around(href='/rankings') Rankings

@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  a.pref(href='/profile') Preferences
+
+  h1 RECENTS
+
+  div
+  h1 CREATED BY YOU
+    br
+    each race in createdRaces
+      br
+      a(href='/profile') #{race}
+      br
+  div
+  h1 ADMITTED RACES
+    br
+    each race in admittedRaces
+      br
+      a(href='/profile') #{race}
+      br
+  div
+  h1 ATTEMPTED RACES
+    br
+    each race in attemptedRaces
+      br
+      a(href='/profile') #{race}
+      br
