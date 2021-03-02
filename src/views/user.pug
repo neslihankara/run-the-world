@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1 #{user.name} (#{user.age}) (#{user.gender})
+  br
+  each race in user.races
+    h3 #{race.name} Race
+    p #{race.kilometers} km
+    p for #{race.requiredRunnerGender}
+    p for #{race.requiredRunnerAge} y.o. age
+    p in the #{race.terrain}
