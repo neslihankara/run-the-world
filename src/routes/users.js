@@ -5,37 +5,44 @@ const router = express.Router()
 const User = require('../models/user')
 const Race = require('../models/race')
 
-const nes = new User('nes', 23, 'f')
-const milo = new User('milo', 26, 'f')
-
-const fast = new Race('fast', 42, 'road', 25, 'f', '14', '20')
-
-nes.age = 25
-
-nes.applyRace(fast)
-nes.joinRace(fast)
-nes.endRace(fast)
-
-const users = [nes, milo]
 /* GET users listing. */
-router.get('/', (req, res) => {
-  let result = users
+router.get('/', async (req, res) => {
+  const query = {}
 
-  // sending a query response as an array but id returns obj
-  // filter would send all the == matches
   if (req.query.name) {
-    result = users.find(user => user.name == req.query.name)
+    query.name = req.query.name
   }
 
-  res.send(result)
+  if (req.query.age) {
+    query.age = req.query.age
+  }
+
+  res.send(await User.find(query))
 })
 
-router.get('/:userId', (req, res) => {
-  // this is how we fetch variables in the url
-  // sending a query response as an array but id returns obj
-  // filter would send all the == matches
+router.get('/initialize', async (req, res) => {
+  const nes = await User.create({ name: 'nes', age: 25, gender: 'f' })
+  const milo = await User.create({ name: 'milo', age: 25, gender: 'f' })
 
-  const user = users[req.query.userId]
+  const raceFast = await Race.create({
+    name: 'fast',
+    kilometers: 42,
+    terrain: 'road',
+    requiredRunnerAge: 25,
+    requiredRunnerGender: 'f',
+    runners: [],
+    createdBy: User.id,
+  })
+
+  await nes.createRace(raceFast)
+
+  await milo.applyRace(raceFast)
+
+  res.sendStatus(200)
+})
+
+router.get('/:userId', async (req, res) => {
+  const user = await User.findById(req.params.userId)
 
   if (user) res.render('user', { user })
   else res.sendStatus(404)

@@ -1,47 +1,41 @@
-const uuid = require('uuid').v4
-// const superb = require('superb') tba
-const RaceManager = require('./race-manager')
+const mongoose = require('mongoose')
+const autopopulate = require('mongoose-autopopulate')
 
+const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  age: {
+    type: Number,
+    required: true,
+  },
+  gender: {
+    type: String,
+    required: true,
+  },
+  isAdmitted: false,
+  races: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Race',
+      autopopulate: true,
+    },
+  ],
+})
 class User {
-  constructor(name, age, gender) {
-    this.name = name
-    this.age = age
-    this.gender = gender
-    this.isAdmitted = false
-    this.id = null
-    this.createdRaces = []
-    this.finishedRaces = []
-    this.attemptedRaces = []
+  async createRace(race) {
+    this.races.push(race)
+    await this.save()
   }
 
-  createRace(race) {
-    this.createdRaces.push(race)
-  }
-
-  applyRace(race) {
-    if (RaceManager.admit(this, race)) {
-      this.isAdmitted = true
-      this.id = uuid()
-    }
-  }
-
-  joinRace(race) {
-    if (this.isAdmitted) console.log('you got this!')
-
-    this.attemptedRaces.push(race)
-  }
-
-  quitRace(race) {
-    // placeholder for unused param error
-    return race.name
-  }
-
-  endRace(race) {
-    this.attemptedRaces.splice(this.attemptedRaces.indexOf(`${race}`), 1)
-    this.finishedRaces.push(race)
+  async applyRace(race) {
+    race.admit(this)
+    await this.save()
   }
 }
 
-// status fixed string
+userSchema.loadClass(User)
+userSchema.plugin(autopopulate)
 
-module.exports = User
+module.exports = mongoose.model('User', userSchema)

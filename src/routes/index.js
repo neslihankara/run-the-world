@@ -1,6 +1,7 @@
 const express = require('express')
 
 const Race = require('../models/race')
+const User = require('../models/user')
 
 const router = express.Router()
 
@@ -9,17 +10,58 @@ router.get('/', (req, res) => {
   res.render('index', { title: 'run the world' })
 })
 
+// tba: the races that have the user whose isCreator property is true for that race in the races array
 router.get('/profile', (req, res) => {
-  const createdRaces = [new Race('marathon A', 42, 'road', 25, 'f', '13:30', '6 hours')] // the races that have the user whose isCreator property is true for that race in the races array
+  const createdRaces = [
+    Race.create({
+      name: 'marathon-C',
+      kilometers: 42,
+      terrain: 'road',
+      requiredRunnerAge: 25,
+      requiredRunnerGender: 'f',
+      runners: [],
+      createdBy: User.id,
+    }),
+  ]
   const admittedRaces = [
-    new Race('race B', 25, 'trail', 22, 'm', '15:30', '5 hours'),
-    new Race('race C', 5, 'road', 30, 'f', '16:30', '3 hours'),
-    new Race('half-marathon D', 26, 'road', 23, 'f-m', '13:30', '6 hours'),
+    Race.create({
+      name: 'marathon-A',
+      kilometers: 26,
+      terrain: 'road',
+      requiredRunnerAge: 23,
+      requiredRunnerGender: 'm',
+      runners: [],
+      createdBy: User.id,
+    }),
+    Race.create({
+      name: 'race-B',
+      kilometers: 5,
+      terrain: 'trail',
+      requiredRunnerAge: 22,
+      requiredRunnerGender: 'f',
+      runners: [],
+      createdBy: User.id,
+    }),
+    Race.create({
+      name: 'race-D',
+      kilometers: 10,
+      terrain: 'road',
+      requiredRunnerAge: 30,
+      requiredRunnerGender: 'f',
+      runners: [],
+      createdBy: User.id,
+    }),
   ]
   const attemptedRaces = [
-    new Race('marathon A', 42, 'road', 25, 'f', '13:30', '6 hours'),
-    new Race('race C', 5, 'road', 30, 'f', '16:30', '3 hours'),
-    new Race('half-marathon D', 26, 'road', 23, 'f-m', '13:30', '6 hours'),
+    Race.create({
+      name: 'marathon-E',
+      kilometers: 23,
+      terrain: 'road',
+      requiredRunnerAge: 25,
+      requiredRunnerGender: 'f',
+      runners: [],
+      createdBy: User.id,
+    }),
   ]
 
   res.render('profile', { createdRaces, admittedRaces, attemptedRaces })

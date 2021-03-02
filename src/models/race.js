@@ -1,30 +1,63 @@
+const mongoose = require('mongoose')
+const autopopulate = require('mongoose-autopopulate')
+
+const raceSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  kilometers: {
+    type: Number,
+    required: true,
+    default: 42,
+  },
+  terrain: {
+    type: String,
+    required: true,
+    default: 'road',
+  },
+  requiredRunnerAge: {
+    type: Number,
+    required: true,
+  },
+  requiredRunnerGender: {
+    type: String, // ENUM
+    required: true,
+  },
+  startTime: {
+    type: Date,
+  },
+  runners: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      autopopulate: true,
+      unique: true,
+    },
+  ],
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+  },
+})
 class Race {
-  constructor(
-    name,
-    kilometers = 42,
-    terrain = 'asphalt',
-    requiredRunnerAge,
-    requiredRunnerGender,
-    startTime,
-    duration
-  ) {
-    this.name = name
-    this.kilometers = kilometers
-    this.terrain = terrain
-    this.requiredRunnerAge = requiredRunnerAge
-    this.requiredRunnerGender = requiredRunnerGender
-    this.startTime = startTime
-    this.duration = duration
-    this.runners = []
-  }
+  async admit(user) {
+    // check if user is eligible to join this race, if not throw an error
+    if (user.age != this.requiredRunnerAge && user.gender != this.requiredRunnerGender)
+      throw new Error('Sorry, you do not meet the requirements of this race.')
 
-  start() {
-    // start the timer or km
-  }
+    // check if the user is already admitted
+    if (user.races.includes(this)) throw new Error('You have already admitted at this race.')
 
-  end() {
-    // end the timer or km
+    // finally, admit the user.
+    this.runners.push(user)
+    user.isAdmitted = true
+
+    await this.save()
+    await user.save()
   }
 }
 
-module.exports = Race
+raceSchema.loadClass(Race)
+raceSchema.plugin(autopopulate)
+
+module.exports = mongoose.model('Race', raceSchema)
