@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  a.pref(href='/profile') Preferences
+
+  h1 RECENTS
+
+  div
+  h1 CREATED BY YOU
+    br
+    each race in createdRaces
+      br
+      p Race: #{race.name}
+      p Kilometers: #{race.kilometers}
+      p Required Age: #{race.requiredRunnerAge}
+      p Terrain Type: #{race.terrain}
+      hr
+      br
+    br
+  div
+  h1 ADMITTED RACES
+    br
+    each race in admittedRaces
+      br
+      p Race: #{race.name}
+      p Kilometers: #{race.kilometers}
+      p Required Age: #{race.requiredRunnerAge}
+      p Terrain Type: #{race.terrain}
+      hr
+      br
+    br
+  div
+  h1 ATTEMPTED RACES
+    br
+    each race in createdRaces
+      br
+      p Race: #{race.name}
+      p Kilometers: #{race.kilometers}
+      p Required Age: #{race.requiredRunnerAge}
+      p Terrain Type: #{race.terrain}
+      hr
+      br
+    br
+  div

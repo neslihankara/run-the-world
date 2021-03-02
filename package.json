@@ -12,12 +12,14 @@
     "express": "^4.17.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
+    "normalize.css": "^8.0.1",
     "pug": "2.0.0-beta11",
     "src": "^1.1.2",
     "superb": "^4.0.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "connect-livereload": "^0.6.1",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.11.0",
@@ -27,6 +29,7 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
+    "livereload": "^0.9.1",
     "prettier": "2.0.5",
     "pretty-quick": "^2.0.1"
   }
