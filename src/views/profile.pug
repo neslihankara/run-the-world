@@ -10,19 +10,35 @@ block content
     br
     each race in createdRaces
       br
-      a(href='/profile') #{race}
+      p Race: #{race.name}
+      p Kilometers: #{race.kilometers}
+      p Required Age: #{race.requiredRunnerAge}
+      p Terrain Type: #{race.terrain}
+      hr
       br
+    br
   div
   h1 ADMITTED RACES
     br
     each race in admittedRaces
       br
-      a(href='/profile') #{race}
+      p Race: #{race.name}
+      p Kilometers: #{race.kilometers}
+      p Required Age: #{race.requiredRunnerAge}
+      p Terrain Type: #{race.terrain}
+      hr
       br
+    br
   div
   h1 ATTEMPTED RACES
     br
-    each race in attemptedRaces
+    each race in createdRaces
       br
-      a(href='/profile') #{race}
+      p Race: #{race.name}
+      p Kilometers: #{race.kilometers}
+      p Required Age: #{race.requiredRunnerAge}
+      p Terrain Type: #{race.terrain}
+      hr
       br
+    br
+  div
