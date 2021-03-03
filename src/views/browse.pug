@@ -1,4 +1,18 @@
 extends layout
 
 block content
-  p Browse races
+  h1.text-primary Browse races
+  br
+  br
+  main
+    .container
+      .row
+        each race in races
+          .col-12.col-md-6.col-lg-4
+            .card
+              .card-body
+                h5.card-title #{race.name}
+                p.card-text
+                p.card-text Kilometers: #{race.kilometers} km
+                p.card-text Age: #{race.requiredRunnerAge}
+                a.btn.btn-primary(href='/') go somewhere
