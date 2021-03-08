@@ -83,4 +83,25 @@ router.get('/rankings', (req, res) => {
   res.render('rankings', { title: 'run the world' })
 })
 
+router.get('/initialize', async (req, res) => {
+  const nes = await User.create({ name: 'nes', age: 25, gender: 'f' })
+  const milo = await User.create({ name: 'milo', age: 25, gender: 'f' })
+
+  const raceFast = await Race.create({
+    name: 'fast',
+    kilometers: 42,
+    terrain: 'road',
+    requiredRunnerAge: 25,
+    requiredRunnerGender: 'f',
+    runners: [],
+    createdBy: User.id,
+  })
+
+  await nes.createRace(raceFast)
+
+  await milo.applyRace(raceFast)
+
+  res.sendStatus(200)
+})
+
 module.exports = router
