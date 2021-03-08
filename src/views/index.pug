@@ -2,12 +2,14 @@ extends layout
 
 block content
   div
-    a.pref(href='/profile') Profile
-  div
-    a.main(href='/') RACE!
-    div
-      a.around(href='/browse') Browse
-    div
-      a.around(href='/create') Create
-    div
-      a.around(href='/rankings') Rankings
+    a.btn.btn-info.mx-auto(href='/profile') Profile
+
+  div.position-relative.ms-1
+    div.position-absolute.top-0.start-50.translate-middle-x
+      a.btn.btn-primary(href='/') RACE!
+      div.position-absolute.top-0.start-50.translate-middle-x
+        a.btn.btn-outline-danger(href='/create') Create
+        div.position-absolute.top-0.start-50.translate-middle-x
+          a.btn.btn-outline-warning(href='/browse') Browse
+          div.position-absolute.top-0.start-50.translate-middle-x
+            a.btn.btn-outline-success(href='/rankings') Rankings

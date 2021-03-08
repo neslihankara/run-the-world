@@ -1,4 +1,12 @@
 extends layout
 
 block content
-  p create a race
+  form.create-race
+    h2.create-race-title Create a race
+    .input-field
+      label.form-label(for='raceName') Race Name
+      input#raceName.form-control(type='text')
+    .input-field
+      label.form-label(for='trail') Terrain
+      input#trail.form-control(type='text')
+    button.btn.btn-primary(type='submit') Create Race
