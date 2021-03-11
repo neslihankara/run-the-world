@@ -13,7 +13,7 @@ export default {
 <template lang="pug">
 .box
   h2 {{ user.name }} ({{ user.age }})
-  p2 Status: {{user.bio || defaultBio }}
+  p Status: {{user.bio || defaultBio }}
 
   h2 Races:
   p(v-if="!user.races.length") this user has no race
