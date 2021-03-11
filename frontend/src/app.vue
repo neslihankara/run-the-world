@@ -1,9 +1,8 @@
 <template lang="pug">
   #app
-    h1 hello!
+    h1 Run the World
     #nav
-      router-link(to="/") Home |&nbsp;
-      router-link(to="/about") About
+      router-link(to="/") User list
     router-view
 </template>
 
