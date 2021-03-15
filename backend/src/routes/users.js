@@ -1,22 +1,13 @@
 const express = require('express')
+const User = require('../models/user')
 
 const router = express.Router()
 
-const User = require('../models/user')
-
 /* GET users listing. */
 router.get('/', async (req, res) => {
-  const query = {}
+  const users = await User.find({})
 
-  if (req.query.name) {
-    query.name = req.query.name
-  }
-
-  if (req.query.age) {
-    query.age = req.query.age
-  }
-
-  res.send(await User.find(query))
+  res.send(users)
 })
 
 router.get('/:userId', async (req, res) => {

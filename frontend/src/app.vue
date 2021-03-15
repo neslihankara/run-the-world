@@ -1,12 +1,16 @@
 <template lang="pug">
   #app
-    h1 Run the World
+    h1.text-primary Run the World
     #nav
-      router-link(to="/") User list
+      router-link(to="/")  Home |
+      router-link(to="/profile")  Profile
     router-view
 </template>
 
 <style lang="scss">
+@import '@/assets/theme.scss';
+@import 'bootstrap/scss/bootstrap.scss';
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
