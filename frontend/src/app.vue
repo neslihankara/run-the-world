@@ -1,8 +1,9 @@
 <template lang="pug">
   #app
-    h1 Run the World
+    h1.text-primary Run the World
     #nav
-      router-link(to="/") User list
+      router-link(to="/")  Home |
+      router-link(to="/profile")  Profile
     router-view
 </template>
 
