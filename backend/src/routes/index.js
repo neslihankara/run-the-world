@@ -84,8 +84,13 @@ router.get('/rankings', (req, res) => {
 })
 
 router.get('/initialize', async (req, res) => {
-  const nes = await User.create({ name: 'nes', age: 25, gender: 'f' })
-  const milo = await User.create({ name: 'milo', age: 25, gender: 'f' })
+  const nes = new User({ name: 'nes', age: 25, gender: 'f', email: 'nes@sample.com' })
+  await nes.setPassword('test')
+  await nes.save()
+
+  const milo = new User({ name: 'milo', age: 25, gender: 'f', email: 'milo@sample.com' })
+  await milo.setPassword('test')
+  await milo.save()
 
   const raceFast = await Race.create({
     name: 'fast',

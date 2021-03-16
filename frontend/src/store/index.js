@@ -31,6 +31,22 @@ export default new Vuex.Store({
     async fetchUsers() {
       const usersRequest = await axios.get('/api/users')
       return usersRequest.data
+    async fetchSession({ commit }) {
+      const user = await axios.get('/api/account/session')
+      commit(mutations.SET_USER, user.data || null)
+    },
+    async login({ commit }, credentials) {
+      try {
+        const user = await axios.post('/api/account/session', credentials)
+        commit(mutations.SET_USER, user.data)
+      } catch (e) {
+        throw e
+      }
+    },
+    async logout({ commit }) {
+      await axios.delete('/api/account/session')
+      commit(mutations.SET_USER, null)
+    },
     }
   },
   modules: {}

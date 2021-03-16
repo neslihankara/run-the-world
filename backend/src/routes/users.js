@@ -17,10 +17,15 @@ router.get('/:userId', async (req, res) => {
   else res.sendStatus(404)
 })
 
+/* POST create a user */
 router.post('/', async (req, res) => {
-  const newUser = await User.create(req.body)
+  const userToCreate = {
+    name: req.body.name,
+    age: req.body.age,
+  }
 
-  res.send(newUser)
+  const createdUser = await User.create(userToCreate)
+  res.send(createdUser)
 })
 
 module.exports = router
