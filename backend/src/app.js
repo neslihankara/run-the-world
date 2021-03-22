@@ -45,8 +45,8 @@ app.use(
     cookie: {
       maxAge: 30 * 24 * 60 * 60 * 1000,
       path: '/api',
-      sameSite: 'none',
-      secure: true,
+      sameSite: process.env.NODE_ENV == 'production' ? 'none' : 'strict',
+      secure: process.env.NODE_ENV == 'production',
     },
   })
 )
@@ -84,7 +84,12 @@ app.use(function (err, req, res) {
 
   // render the error page
   res.status(err.status || 500)
-  res.render('error')
+
+  res.send({
+    status: err.status,
+    message: err.message,
+    stack: req.app.get('env') == 'development' ? err.stack : '',
+  })
 })
 
 module.exports = app

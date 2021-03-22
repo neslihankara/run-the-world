@@ -5,6 +5,8 @@ services:
     build:
       context: frontend
       dockerfile: Dockerfile
+    environment:
+      - PORT=8080
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.frontend.rule=Host(`runtheworld.localhost`)"
