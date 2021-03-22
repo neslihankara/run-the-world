@@ -9,6 +9,7 @@ const passport = require('passport')
 const User = require('./models/user')
 
 require('./database-connection')
+const socketService = require('./socket-service')
 
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
@@ -19,6 +20,9 @@ const app = express()
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
+
+
+app.set('io', socketService)
 
 app.use(logger('dev'))
 app.use(express.json())
