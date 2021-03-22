@@ -1,9 +1,29 @@
+<script>
+import axios from 'axios'
+import { mapActions } from 'vuex'
+export default {
+  name: 'App',
+  async created() {
+    console.log((await axios.get('/api/account/session')).data)
+  },
+  methods: {
+    ...mapActions(['logout']),
+    async doLogout() {
+      await this.logout()
+      this.$router.push('/login')
+    }
+  }
+}
+</script>
+
 <template lang="pug">
   #app
     h1.text-primary Run the World
     #nav
       router-link(to="/")  Home |
-      router-link(to="/profile")  Profile
+      router-link(to="/profile")  Profile |
+      router-link(to="/login") Login |
+      a(@click="doLogout" href="#") Logout
     router-view
 </template>
 

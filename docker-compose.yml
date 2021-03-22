@@ -5,6 +5,8 @@ services:
     build:
       context: frontend
       dockerfile: Dockerfile
+    environment:
+      - PORT=8080
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.frontend.rule=Host(`runtheworld.localhost`)"
@@ -26,7 +28,7 @@ services:
       - MONGODB_CONNECTION_STRING=mongodb://mongo/runTheWorld
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=(Host(`runtheworld.localhost`) && PathPrefix(`/api`))"
+      - "traefik.http.routers.backend.rule=(Host(`runtheworld.localhost`) && (PathPrefix(`/api`) || PathPrefix(`/socket`)))"
       - "traefik.http.routers.backend.entrypoints=web"
     ports:
       - 3000
