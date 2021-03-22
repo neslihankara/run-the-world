@@ -6,9 +6,10 @@ const logger = require('morgan')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const passport = require('passport')
+const cors = require('cors')
 const User = require('./models/user')
 
-require('./database-connection')
+const mongooseConnection = require('./database-connection')
 const socketService = require('./socket-service')
 
 const indexRouter = require('./routes/index')
@@ -17,10 +18,18 @@ const accountRouter = require('./routes/account')
 
 const app = express()
 
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+)
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
+app.set('trust proxy', 1)
 
 app.set('io', socketService)
 
