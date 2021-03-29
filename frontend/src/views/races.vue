@@ -7,12 +7,11 @@ export default {
   components: { RaceCard },
   data() {
     return {
-      race: null
+      races: []
     }
   },
   async created() {
-    this.race = await this.fetchRaces()
-    console.log('here?')
+    this.races = await this.fetchRaces()
   },
   methods: {
     ...mapActions(['fetchRaces'])
@@ -22,5 +21,6 @@ export default {
 
 <template lang="pug">
     .about
-        RaceCard(:race="race" v-if="race")
+        .div(v-for="race in races")
+            RaceCard(:race="race" v-if="race")
 </template>

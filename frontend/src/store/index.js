@@ -75,7 +75,6 @@ const store = new Vuex.Store({
       return usersRequest.data
     },
     async fetchRaces() {
-      console.log('hello')
       const racesRequest = await axios.get('/api/races')
       return racesRequest.data
     },
