@@ -9,9 +9,9 @@ export default {
 </script>
 
 <template lang="pug">
-.buttons
+.home
   button.btn.primary RACE
   button.btn.primary Create
-  button.btn.primary Browse
+  router-link(to="/races") Browse
   button.btn.primary Rankings
 </template>
