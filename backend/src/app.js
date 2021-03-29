@@ -15,6 +15,7 @@ const socketService = require('./socket-service')
 
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
+const racesRouter = require('./routes/races')
 const accountRouter = require('./routes/account')
 
 const app = express()
@@ -73,6 +74,7 @@ app.use('/api', (req, res, next) => {
 app.use('/api/', indexRouter)
 app.use('/api/account', accountRouter)
 app.use('/api/users', usersRouter)
+app.use('/api/races', racesRouter)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

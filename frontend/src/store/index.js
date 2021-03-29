@@ -74,6 +74,10 @@ const store = new Vuex.Store({
       const usersRequest = await axios.get('/api/users')
       return usersRequest.data
     },
+    async fetchRaces() {
+      const racesRequest = await axios.get('/api/races')
+      return racesRequest.data
+    },
     async goLive({ state, commit }) {
       socket.emit('go live', state.user._id, status => {
         commit(mutations.SET_LIVE_STREAM, state.user._id)
