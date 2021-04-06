@@ -1,4 +1,5 @@
 const express = require('express')
+const { celebrate, Joi, errors, Segments } = require('celebrate')
 const User = require('../models/user')
 
 const router = express.Router()
@@ -18,14 +19,25 @@ router.get('/:userId', async (req, res) => {
 })
 
 /* POST create a user */
-router.post('/', async (req, res) => {
-  const userToCreate = {
-    name: req.body.name,
-    age: req.body.age,
-  }
+router.post(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      age: Joi.number().required(),
+      gender: Joi.string().required(),
+    },
+  }),
+  async (req, res) => {
+    const userToCreate = {
+      name: req.body.name,
+      age: req.body.age,
+      gender: req.body.gender,
+    }
 
-  const createdUser = await User.create(userToCreate)
-  res.send(createdUser)
-})
+    const createdUser = await User.create(userToCreate)
+    res.send(createdUser)
+  }
+)
 
 module.exports = router

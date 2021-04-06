@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+
 import io from 'socket.io-client'
 
 axios.defaults.baseURL = process.env.VUE_APP_BASE_URL
@@ -98,6 +99,9 @@ const store = new Vuex.Store({
     async logout({ commit }) {
       await axios.delete('/api/account/session')
       commit(mutations.SET_USER, null)
+    },
+    async register(store, user) {
+      return axios.post('/api/account', user)
     },
     async addLiveStream({ state, commit }, stream) {
       commit(mutations.ADD_LIVE_STREAM, stream)

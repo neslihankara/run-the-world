@@ -8,6 +8,8 @@ const MongoStore = require('connect-mongo')(session)
 const passport = require('passport')
 const cors = require('cors')
 const helmet = require('helmet')
+const { errors } = require('celebrate')
+
 const User = require('./models/user')
 
 const mongooseConnection = require('./database-connection')
@@ -75,6 +77,9 @@ app.use('/api/', indexRouter)
 app.use('/api/account', accountRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/races', racesRouter)
+
+// handle the errors coming from celebrate
+app.use(errors())
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
