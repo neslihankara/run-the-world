@@ -2,8 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/home.vue'
 import Profile from '../views/profile.vue'
-import Login from '../views/login.vue'
 import Races from '../views/races.vue'
+import Login from '../views/login.vue'
 import Register from '../views/register.vue'
 
 Vue.use(VueRouter)
@@ -21,17 +21,26 @@ export default function init(store) {
       {
         path: '/profile',
         name: 'Profile',
-        component: Profile
+        component: Profile,
+        beforeEnter(to, from, next) {
+          if (!store.state.user) return next('/login')
+          return next()
+        }
       },
       {
         path: '/login',
         name: 'Login',
-        component: Login
+        component: Login,
+        beforeEnter(to, from, next) {
+          if (store.state.user) return next('/profile')
+          return next()
+        }
       },
       {
         path: '/races',
         name: 'Races',
         component: Races
+      },
       {
         path: '/register',
         name: 'Register',
