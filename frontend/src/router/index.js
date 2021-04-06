@@ -4,6 +4,8 @@ import Home from '../views/home.vue'
 import Profile from '../views/profile.vue'
 import Login from '../views/login.vue'
 import Races from '../views/races.vue'
+import Register from '../views/register.vue'
+
 Vue.use(VueRouter)
 
 export default function init(store) {
@@ -30,6 +32,14 @@ export default function init(store) {
         path: '/races',
         name: 'Races',
         component: Races
+      {
+        path: '/register',
+        name: 'Register',
+        component: Register,
+        beforeEnter(to, from, next) {
+          if (store.state.user) return next('/profile')
+          return next()
+        }
       }
     ]
   })
