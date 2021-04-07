@@ -77,8 +77,13 @@ const store = new Vuex.Store({
       return usersRequest.data
     },
     async fetchRaces() {
-      const racesRequest = await axios.get('/api/races')
-      return racesRequest.data
+      try {
+        const racesRequest = await axios.get('/api/races')
+        return racesRequest.data
+      } catch (e) {
+        if (e.message.includes('500')) window.alert('Login to browse races')
+      }
+    },
     async createRace(store, race) {
       try {
         await axios.post('/api/races', race)
