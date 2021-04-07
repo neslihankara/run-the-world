@@ -25,7 +25,7 @@ const raceSchema = new mongoose.Schema({
     required: true,
   },
   startTime: {
-    type: Date,
+    type: String, // should be date
   },
   runners: [
     {

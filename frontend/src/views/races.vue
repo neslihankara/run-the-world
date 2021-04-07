@@ -20,7 +20,11 @@ export default {
 </script>
 
 <template lang="pug">
-    .about
-        .div(v-for="race in races")
-            RaceCard(:race="race" v-if="race")
+.about
+  .container
+    .div(v-for="race in races")
+        RaceCard(:race="race" v-if="race")
+        br
+        br
+        br
 </template>
