@@ -24,7 +24,7 @@ export default {
       router-link(to="/profile")  Profile |
       router-link(to="/register")  Register |
       router-link(to="/login")  Login |
-      a(@click="doLogout" href="#") Logout
+      a(@click="doLogout" href="#")  Logout
     router-view
 </template>
 
