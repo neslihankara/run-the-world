@@ -14,4 +14,5 @@ export default {
   button.btn.primary Create
   router-link(to="/races") Browse
   button.btn.primary Rankings
+  router-link(to="/create-race")  Create &nbsp; |
 </template>

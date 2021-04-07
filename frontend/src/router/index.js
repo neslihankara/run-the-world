@@ -5,6 +5,7 @@ import Profile from '../views/profile.vue'
 import Races from '../views/races.vue'
 import Login from '../views/login.vue'
 import Register from '../views/register.vue'
+import CreateRace from '../views/create-race.vue'
 
 Vue.use(VueRouter)
 
@@ -49,6 +50,11 @@ export default function init(store) {
           if (store.state.user) return next('/profile')
           return next()
         }
+      },
+      {
+        path: '/create-race',
+        name: 'CreateRace',
+        component: CreateRace
       }
     ]
   })
