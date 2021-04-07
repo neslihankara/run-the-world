@@ -3,7 +3,13 @@ const Race = require('../models/race')
 
 const router = express.Router()
 
-router.get('/', async (req, res) => {
+function ensureLogin(req, res, next) {
+  if (req.user) return next()
+
+  next(new Error('Unauthorized'))
+}
+
+router.get('/', ensureLogin, async (req, res) => {
   const races = await Race.find({})
 
   res.send(races)
@@ -16,7 +22,7 @@ router.get('/:raceId', async (req, res) => {
   else res.sendStatus(404)
 })
 
-router.post('/', async (req, res) => {
+router.post('/', ensureLogin, async (req, res) => {
   const raceToCreate = {
     name: req.body.name,
     kilometers: req.body.kilometers,
