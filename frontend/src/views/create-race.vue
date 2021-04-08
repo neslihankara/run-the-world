@@ -3,16 +3,19 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'createRace',
+  components: {},
   data() {
     return {
-      name: null,
-      kilometers: null,
-      terrain: null,
-      requiredRunnerAge: null,
-      requiredRunnerGender: null,
-      startTime: null,
-      runners: [],
-      createdBy: null,
+      race: {
+        name: null,
+        kilometers: null,
+        terrain: null,
+        requiredRunnerAge: null,
+        requiredRunnerGender: null,
+        startTime: null,
+        runners: [],
+        createdBy: null
+      },
 
       backendError: null
     }
