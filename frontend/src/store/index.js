@@ -39,7 +39,6 @@ const store = new Vuex.Store({
   state: {
     count: 0,
     user: null,
-    race: null,
     currentLiveStream: null,
     liveStreams: [],
     liveStreamMessages: []
@@ -81,15 +80,16 @@ const store = new Vuex.Store({
         const racesRequest = await axios.get('/api/races')
         return racesRequest.data
       } catch (e) {
-        if (e.message.includes('500')) window.alert('Login to browse races')
+        if (e.message.includes('500')) {
+          window.alert('Login to browse races')
+          return
+        }
+
+        throw e
       }
     },
     async createRace(store, race) {
-      try {
-        await axios.post('/api/races', race)
-      } catch (e) {
-        if (e.message.includes('500')) window.alert('Login to create a race')
-      }
+      await axios.post('/api/races', race)
     },
     async goLive({ state, commit }) {
       socket.emit('go live', state.user._id, status => {
