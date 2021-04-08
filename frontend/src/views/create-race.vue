@@ -22,24 +22,22 @@ export default {
   },
   methods: {
     ...mapActions(['createRace']),
-    async submitLogin(e) {
-      e.preventDefault()
-
+    async submitRace() {
       try {
         await this.createRace({
-          name: this.name,
-          kilometers: this.age,
-          terrain: this.gender,
-          requiredRunnerAge: this.requiredRunnerAge,
-          requiredRunnerGender: this.requiredRunnerGender,
-          startTime: this.startTime,
-          runners: this.runners,
-          createdBy: this.createdBy
+          name: this.race.name,
+          kilometers: this.race.kilometers,
+          terrain: this.race.terrain,
+          requiredRunnerAge: this.race.requiredRunnerAge,
+          requiredRunnerGender: this.race.requiredRunnerGender,
+          startTime: this.race.startTime,
+          runners: this.race.runners,
+          createdBy: this.race.createdBy //users[0] maybe?
         })
 
         this.$router.push('/races') // this should return to specific race's page maybe with `/${this.raceId}`
-      } catch (e) {
-        this.backendError = e.response.data.message
+      } catch (err) {
+        this.backendError = err.message
       }
     }
   }
