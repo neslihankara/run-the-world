@@ -96,6 +96,9 @@ const store = new Vuex.Store({
         commit(mutations.SET_LIVE_STREAM, state.user._id)
       })
     },
+    async applyRace(store, raceId) {
+      await axios.post(`/api/races/${raceId}/attendances`)
+    },
     async fetchSession({ commit }) {
       const user = await axios.get('/api/account/session')
       commit(mutations.SET_USER, user.data || null)
