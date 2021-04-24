@@ -1,5 +1,5 @@
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'RaceCard',
@@ -14,10 +14,14 @@ export default {
     async apply() {
       try {
         await this.applyRace(this.race._id)
+        alert('You are succesfully admitted to the race')
       } catch (err) {
         alert(err.response.data.message)
       }
     }
+  },
+  computed: {
+    ...mapState(['user'])
   }
 }
 </script>
@@ -32,7 +36,7 @@ export default {
       p.card-text For {{ race.requiredRunnerGender }} runners
       p.card-text On the {{  race.terrain }}
       p.card-text Starts at {{ race.startTime }}
-      button.btn.btn-primary(@click='apply') Apply for this race!
+      button.btn.btn-primary(@click='apply' :disabled="race.attendances.some(attendance => attendance.user._id == user._id)") Apply for this race!
       a.btn.btn-primary(href='/') See the results
 </template>
 
