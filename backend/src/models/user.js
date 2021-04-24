@@ -16,10 +16,10 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   isAdmitted: false,
-  races: [
+  attendances: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Race',
+      ref: 'Attendance',
       autopopulate: true,
     },
   ],
