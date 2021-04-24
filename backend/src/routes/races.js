@@ -36,4 +36,15 @@ router.post('/', ensureLogin, async (req, res) => {
   res.send(createdRace)
 })
 
+router.post('/:raceId/attendances', ensureLogin, async (req, res) => {
+  const race = await Race.findById(req.params.raceId)
+
+  try {
+    await race.admit(req.user)
+    res.sendStatus(200)
+  } catch (err) {
+    res.status(400).send({ message: err.message })
+  }
+})
+
 module.exports = router
