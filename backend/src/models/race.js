@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
+const Attendance = require('./attendance')
 
 const raceSchema = new mongoose.Schema({
   name: {
@@ -27,12 +28,11 @@ const raceSchema = new mongoose.Schema({
   startTime: {
     type: String, // should be date
   },
-  runners: [
+  attendances: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      ref: 'Attendance',
       autopopulate: true,
-      unique: true,
     },
   ],
   createdBy: {
@@ -46,11 +46,13 @@ class Race {
       throw new Error('Sorry, you do not meet the requirements of this race.')
 
     // check if the user is already admitted
-    if (user.races.includes(this)) throw new Error('You have already admitted at this race.')
+    if (this.attendances.some(a => a.user.equals(user))) throw new Error('You have already admitted at this race.')
 
     // finally, admit the user.
-    this.runners.push(user)
-    user.isAdmitted = true
+    const attendance = await Attendance.create({ user, race: this })
+
+    this.attendances.push(attendance)
+    user.attendances.push(attendance)
 
     await this.save()
     await user.save()
