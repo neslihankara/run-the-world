@@ -1,10 +1,22 @@
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'RaceCard',
   props: ['race'],
   data() {
     return {
       defaultDescription: 'Not defined'
+    }
+  },
+  methods: {
+    ...mapActions(['applyRace']),
+    async apply() {
+      try {
+        await this.applyRace(this.race._id)
+      } catch (err) {
+        alert(err.response.data.message)
+      }
     }
   }
 }
@@ -23,6 +35,8 @@ export default {
         a.btn.btn-primary(href='/') Find some friends at race.runners
         a.btn.btn-primary(href='/') Apply for this race!
         a.btn.btn-primary(href='/') See the results
+      button.btn.btn-primary(@click='apply') Apply for this race!
+      a.btn.btn-primary(href='/') See the results
 </template>
 
 <style lang="scss" scoped>
