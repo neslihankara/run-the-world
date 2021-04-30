@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios'
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
+
 export default {
   name: 'App',
   async created() {
@@ -10,22 +11,45 @@ export default {
     ...mapActions(['logout']),
     async doLogout() {
       await this.logout()
-      this.$router.push('/login')
     }
+  },
+  computed: {
+    ...mapState(['user'])
   }
 }
 </script>
 
 <template lang="pug">
   #app
-    h1.text-primary Run the World
     #nav
-      router-link(to="/")  Home |
-      router-link(to="/profile")  Profile |
-      router-link(to="/register")  Register |
-      router-link(to="/login")  Login |
-      a(@click="doLogout" href="#")  Logout
-    router-view
+      .home
+        nav.navbar.navbar-expand-lg.navbar-light.bg-light
+          .container-fluid
+            a.navbar-brand(to='/') Run the World
+            button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
+              span.navbar-toggler-icon
+            #navbarNavDropdown.collapse.navbar-collapse
+              ul.navbar-nav
+                li.nav-item
+                  a.nav-link(href='/') Home
+                li.nav-item
+                  a.nav-link(href='/profile') Profile
+                li.nav-item.dropdown
+                  a#navbarDropdownMenuLink.nav-link.dropdown-toggle(to='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+                    | Race
+                  ul.dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
+                    li
+                      a.nav-link.dropdown-item(href='/races') Browse Races
+                    li
+                      a.nav-link.dropdown-item(href='/create-race') Create Race
+                li.nav-item
+                  a.nav-link(href='/live-chat') Live Chat
+                li.nav-item#registration
+                  a.nav-link(v-if="!user" href='/register') Register
+                li.nav-item#registration
+                  a.nav-link(v-if="!user" href='/login') Login
+                li.nav-item#registration
+                  a.nav-link(v-if="user" @click="doLogout" href='/') Logout
 </template>
 
 <style lang="scss">
