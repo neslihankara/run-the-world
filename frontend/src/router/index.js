@@ -6,6 +6,7 @@ import Races from '../views/races.vue'
 import Login from '../views/login.vue'
 import Register from '../views/register.vue'
 import CreateRace from '../views/create-race.vue'
+import LiveChat from '../views/live-chat.vue'
 
 Vue.use(VueRouter)
 
@@ -55,6 +56,11 @@ export default function init(store) {
         path: '/create-race',
         name: 'CreateRace',
         component: CreateRace
+      },
+      {
+        path: '/live-chat',
+        name: 'LiveChat',
+        component: LiveChat
       }
     ]
   })
