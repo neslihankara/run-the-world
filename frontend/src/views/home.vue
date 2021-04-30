@@ -9,11 +9,10 @@ export default {
 </script>
 
 <template lang="pug">
-.home
-  router-link(to="/") Race &nbsp; |
-  router-link(to="/create-race")  Create &nbsp; |
-  router-link(to="/races")  Browse &nbsp; |
-  router-link(to="/")  Rankings &nbsp;
+.div
+  p Run the World is an online race holding app.
+  | You can create a race or join to an existing one using the navigation bar above.
+  p Enjoy running with your friends in a marathon or in a training session.
 </template>
 
 <style lang="scss">
