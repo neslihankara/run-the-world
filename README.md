@@ -4,6 +4,8 @@ This is an app for holding real-time runs around the globe.
 
 To build this JavaScript technologies have been used. In backend it has Node.js, Express.js and MongoDB. In frontend it uses Vue.js.
 
+You can see the project here: https://rtw-auto-frontend-4ynsbvwjja-ew.a.run.app/
+
 # Installation
 
 Fork the repository.
