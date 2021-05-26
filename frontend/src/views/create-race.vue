@@ -2,7 +2,7 @@
 import { mapActions } from 'vuex'
 
 export default {
-  name: 'createRace',
+  name: 'CreateRace',
   components: {},
   data() {
     return {
