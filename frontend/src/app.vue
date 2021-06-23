@@ -21,45 +21,53 @@ export default {
 
 <template lang="pug">
   #app
-    .navbar
-      router-link(to="/") Run the World
-      router-link(to="/") Home
-      router-link(to="/profile") Profile
-      router-link(to="/races") Browse Races
-      router-link(to="/create-race") Create Race
-      router-link(to="/live-chat") Live Chat
-      router-link(v-if="!user" to="/register") Register
-      router-link(v-if="!user" to="/login") Login
-      router-link(v-if="user" @click="doLogout" to="/") Logout
+    .header
+      .navbar-wrapper
+        .navbar#navbar
+          router-link.link(to="/") Run the World
+          router-link.link(to="/race") Races
+          //- router-link.link(to="/races") Browse Races
+          //- router-link.link(to="/create-race") Create Race
+          router-link.link(to="/live-chat") Live Chat
+          router-link.link(v-if="!user" to="/register") Register
+          router-link.link(v-if="!user" to="/login") Login
+          router-link.link(v-if="user" @click="doLogout" to="/") Logout
+          router-link.link(to="/profile") Profile
     router-view
 </template>
 
 <style lang="scss">
-// @import '@/assets/theme.scss';
-// @import 'bootstrap/scss/bootstrap.scss';
-
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  font-family: 'Teko', sans-serif;
+  background: black;
+  padding: 30px;
+
+  a {
+    text-decoration: none;
+  }
+
+  p, li {
+    font-size: 30px;
+  }
 }
 
-// #nav {
-//   padding: 30px;
-
-//   a {
-//     font-weight: bold;
-//     color: #2c3e50;
-
-//     &.router-link-exact-active {
-//       color: #42b983;
-//     }
-//   }
+.navbar-wrapper {
+  position: static;
+  margin: 20px 20px 20px 20px;
+  border: solid white;
+  border-width: 0.5px 3px 0.5px;
+  border-radius: 20px;
+}
 
 .navbar {
+  position: static;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  font-size: 45px;
+  padding: 20px 0px 20px 0px;
+
+  .link{
+    color: rgb(0, 230, 230);
+  }
 }
 </style>
