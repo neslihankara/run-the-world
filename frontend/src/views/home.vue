@@ -9,19 +9,47 @@ export default {
 </script>
 
 <template lang="pug">
-.div
-  p Run the World is an online race holding app.
-  | You can create a race or join to an existing one using the navigation bar above.
-  p Enjoy running with your friends in a marathon or in a training session.
+  .welcome-card
+    .card
+      .headline
+        .name
+          p Run the World
+        .slogan
+          p Any time. Any where. Without a limit.
+      .summary
+        p Create a race | marathon | training session
+        p Share it with the world
+        p Go out and run!
+      .sections
+        .why
+          .name
+            p Save the Planet
+          .explanation
+            P We love the planet Earth and we love the people living on it. Run the World is created to allow future generations to run just like we can. Thanks to it, we reduce the amount of waste we leave behind every time we hold a running race. There is only you and your mobile phone.
+        .independence
+          .name
+            p Go boundless
+          .explanation
+            p We have no bounds. None to the place, none to the organizators. We are free human beings and we should be able to run a marathon any time any where with a friend who lives accross the ocean. This is how we roll as the new generation.
+        .training
+          .name
+            p Train with a Remote Team
+          .explanation
+            p You can create a team or find a coach and have your training sessions remotely set via Run the World.
+        .opensource
+          .name
+            p Support Open Source
+          .explanation
+            p Run the World is completely open source. You can find its GitHub repository &nbsp;
+             a(href="https://github.com/neslihankara/run-the-world") here
+             |. If you are into software, you are more than welcome to contribute to the repo!
 </template>
 
 <style lang="scss">
-a {
-  font-weight: bold;
-  color: #2c3e50;
-
-  &.router-link-exact-active {
-    color: #42b983;
-  }
+p {
+  color: white;
+}
+li {
+  color: white;
 }
 </style>
