@@ -28,7 +28,7 @@ export default {
           router-link.link(to="/race") Races
           //- router-link.link(to="/races") Browse Races
           //- router-link.link(to="/create-race") Create Race
-          router-link.link(to="/live-chat") Live Chat
+          router-link.link(to="/live-chat") People
           router-link.link(v-if="!user" to="/register") Register
           router-link.link(v-if="!user" to="/login") Login
           router-link.link(v-if="user" @click="doLogout" to="/") Logout
