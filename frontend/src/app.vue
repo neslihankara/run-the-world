@@ -46,9 +46,6 @@ export default {
     text-decoration: none;
   }
 
-  p, li {
-    font-size: 30px;
-  }
 }
 
 .navbar-wrapper {
