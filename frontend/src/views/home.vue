@@ -26,12 +26,12 @@ export default {
             h2.name
               p Save the Planet
             .explanation
-              P We love the planet Earth and we love the people living on it. Run the World is created to allow future generations to run just like we can. Thanks to it, we reduce the amount of waste we leave behind every time we hold a running race. There is only you and your mobile phone.
+              P Run the World is created to allow future generations to run freely just like we can. Thanks to it, we reduce the amount of waste we leave behind every time we hold a running race. There is only you and your mobile phone.
           .training
             h2.name
               p Train with a Remote Team
             .explanation
-              p You can create a team or find a coach and have your training sessions remotely set via Run the World.
+              p You can create a team or find a coach and have your training sessions remotely set via Run the World. You can find new friens, invite people and follow a program together.
         .second
           .independence
             h2.name
