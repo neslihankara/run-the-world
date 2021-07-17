@@ -17,50 +17,51 @@ export default {
         .slogan
           p Any time. Any where. Without a limit.
       .summary
-        p Create your race | marathon | training session
-        p Share it with the world
+        p Create your running session.
+        p Share it with the world.
         p Go out and run!
-      .sections
+      .sections.container
         .first
           .why
-            .div
+            .item
               h2.name
-                p Save the Planet
+                h3 Save the Planet
               .explanation
                 P Run the World is created to allow future generations to run freely just like we can. Thanks to it, we reduce the amount of waste we leave behind every time we hold a running race. There is only you and your mobile phone.
           .training
-            .div
+            .item
               h2.name
-                p Train with a Remote Team
+                h3 Train with a Remote Team
               .explanation
                 p You can create a team or find a coach and have your training sessions remotely set via Run the World. You can find new friens, invite people and follow a program together.
         .second
           .independence
-            .div
+            .item
               h2.name
-                p Go boundless
+                h3 Go Boundless
               .explanation
                 p We have no bounds. None to the place, none to the organizators. We are free human beings and we should be able to run a marathon any time any where with a friend who lives accross the ocean. This is how we roll as the new generation.
           .opensource
-            .div
+            .item
               h2.name
-                p Support Open Source
+                h3 Support Open Source
               .explanation
-                p Run the World is completely open source. You can find its GitHub repository &nbsp;
+                p Run the World is completely open source. You can find the GitHub repository &nbsp;
                   a(href="https://github.com/neslihankara/run-the-world") here
-                  |. If you are into software, you are more than welcome to contribute to the repo!
+                  |. If you are into software engineering, you are more than welcome to contribute to the repo!
 </template>
 
 <style lang="scss">
-p, li, h1, .stress {
-  font-size: 35px;
-  color: white;
+p, li, h1 {
+  font-size: 30px;
+  color: black;
 }
 
 .card {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 30px;
 
   .headline {
     display: flex;
@@ -79,21 +80,21 @@ p, li, h1, .stress {
     flex-direction: column;
     align-items: center;
 
-    >p {
+    p {
+      font-size: 30px;
       margin: 0px;
     }
 
     @media (min-width: 750px) {
-        >p {
-      font-size: 40px;
-    }
+      p {
+        font-size: 40px;
+      }
     }
   }
 
   .sections {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 100%;
     text-align: center;
 
     .explanation {
@@ -102,25 +103,24 @@ p, li, h1, .stress {
       text-align: left;
     }
 
-    .div {
-      border: solid pink;
+    .item {
       max-width: 600px;
-      border-width: 0.5px 3px 0.5px;
-      border-radius: 20px;
       padding: 20px;
-      margin: 20px 20px 40px 20px;
 
-      .name>p {
+      .name>h3 {
         font-size: 40px;
-        color: pink;
       }
 
       .explanation>p {
         font-size: 30px;
       }
-
     }
 
+    @media (min-width: 750px) {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      grid-column-gap: 1em;
+    }
   }
 
   @media (min-width: 750px) {

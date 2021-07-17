@@ -39,7 +39,8 @@ export default {
 <style lang="scss">
 #app {
   font-family: 'Teko', sans-serif;
-  background: rgb(83, 79, 79);
+  // background: rgb(102, 100, 100);
+  background: rgb(255, 255, 255);
   padding: 30px;
 
   a {
@@ -50,10 +51,6 @@ export default {
 
 .navbar-wrapper {
   position: static;
-  margin: 20px 20px 20px 20px;
-  border: solid white;
-  border-width: 0.5px 3px 0.5px;
-  border-radius: 20px;
 }
 
 .navbar {
@@ -61,10 +58,10 @@ export default {
   display: flex;
   justify-content: space-evenly;
   padding: 20px 0px 20px 0px;
-  font-size: 30px;
+  font-size: 23px;
 
   .link {
-    color: white;
+    color: black;
   }
 
   @media (min-width: 750px) {
