@@ -23,33 +23,37 @@ export default {
       .sections
         .first
           .why
-            h2.name
-              p Save the Planet
-            .explanation
-              P Run the World is created to allow future generations to run freely just like we can. Thanks to it, we reduce the amount of waste we leave behind every time we hold a running race. There is only you and your mobile phone.
+            .div
+              h2.name
+                p Save the Planet
+              .explanation
+                P Run the World is created to allow future generations to run freely just like we can. Thanks to it, we reduce the amount of waste we leave behind every time we hold a running race. There is only you and your mobile phone.
           .training
-            h2.name
-              p Train with a Remote Team
-            .explanation
-              p You can create a team or find a coach and have your training sessions remotely set via Run the World. You can find new friens, invite people and follow a program together.
+            .div
+              h2.name
+                p Train with a Remote Team
+              .explanation
+                p You can create a team or find a coach and have your training sessions remotely set via Run the World. You can find new friens, invite people and follow a program together.
         .second
           .independence
-            h2.name
-              p Go boundless
-            .explanation
-              p We have no bounds. None to the place, none to the organizators. We are free human beings and we should be able to run a marathon any time any where with a friend who lives accross the ocean. This is how we roll as the new generation.
+            .div
+              h2.name
+                p Go boundless
+              .explanation
+                p We have no bounds. None to the place, none to the organizators. We are free human beings and we should be able to run a marathon any time any where with a friend who lives accross the ocean. This is how we roll as the new generation.
           .opensource
-            h2.name
-              p Support Open Source
-            .explanation
-              p Run the World is completely open source. You can find its GitHub repository &nbsp;
-                a(href="https://github.com/neslihankara/run-the-world") here
-                |. If you are into software, you are more than welcome to contribute to the repo!
+            .div
+              h2.name
+                p Support Open Source
+              .explanation
+                p Run the World is completely open source. You can find its GitHub repository &nbsp;
+                  a(href="https://github.com/neslihankara/run-the-world") here
+                  |. If you are into software, you are more than welcome to contribute to the repo!
 </template>
 
 <style lang="scss">
 p, li, h1, .stress {
-  font-size: 30px;
+  font-size: 35px;
   color: white;
 }
 
@@ -62,10 +66,12 @@ p, li, h1, .stress {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0px;
 
     .name>h1 {
-      font-size: 100px;
+      font-size: 50px;
     }
+
   }
 
   .summary {
@@ -74,7 +80,13 @@ p, li, h1, .stress {
     align-items: center;
 
     >p {
-      font-size: 50px;
+      margin: 0px;
+    }
+
+    @media (min-width: 750px) {
+        >p {
+      font-size: 40px;
+    }
     }
   }
 
@@ -90,6 +102,31 @@ p, li, h1, .stress {
       text-align: left;
     }
 
+    .div {
+      border: solid pink;
+      max-width: 600px;
+      border-width: 0.5px 3px 0.5px;
+      border-radius: 20px;
+      padding: 20px;
+      margin: 20px 20px 40px 20px;
+
+      .name>p {
+        font-size: 40px;
+        color: pink;
+      }
+
+      .explanation>p {
+        font-size: 30px;
+      }
+
+    }
+
+  }
+
+  @media (min-width: 750px) {
+    p {
+      font-size: 50px;
+    }
   }
 }
 </style>

@@ -39,7 +39,7 @@ export default {
 <style lang="scss">
 #app {
   font-family: 'Teko', sans-serif;
-  background: black;
+  background: rgb(83, 79, 79);
   padding: 30px;
 
   a {
@@ -60,11 +60,15 @@ export default {
   position: static;
   display: flex;
   justify-content: space-evenly;
-  font-size: 45px;
   padding: 20px 0px 20px 0px;
+  font-size: 30px;
 
-  .link{
-    color: rgb(0, 230, 230);
+  .link {
+    color: white;
+  }
+
+  @media (min-width: 750px) {
+    font-size: 40px;
   }
 }
 </style>
