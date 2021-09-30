@@ -25,8 +25,7 @@ export default {
       .navbar-wrapper
         .navbar#navbar
           router-link.link(to="/") Run the World
-          router-link.link(to="/race") Races
-          //- router-link.link(to="/races") Browse Races
+          router-link.link(to="/races") Races
           //- router-link.link(to="/create-race") Create Race
           router-link.link(to="/live-chat") People
           router-link.link(v-if="!user" to="/register") Register
