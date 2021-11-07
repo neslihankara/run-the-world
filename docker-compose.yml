@@ -4,7 +4,7 @@ services:
     image: frontend
     build:
       context: frontend
-      dockerfile: Dockerfile
+      dockerfile: dev.Dockerfile
     environment:
       - PORT=8080
     labels:
@@ -20,7 +20,7 @@ services:
     image: backend
     build:
       context: backend
-      dockerfile: Dockerfile
+      dockerfile: dev.Dockerfile
     environment:
       # - MONGODB_USERNAME
       # - MONGODB_PASSWORD

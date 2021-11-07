@@ -13,7 +13,7 @@ export default {
     .card
       .headline
         .name
-          h1 RUN THE WORLD
+          h1.title RUN THE WORLD
         .slogan
           p Any time. Any where. Without a limit.
       .summary
@@ -52,27 +52,26 @@ export default {
 </template>
 
 <style lang="scss">
-p, li, h1 {
+p,
+li,
+h1 {
   font-size: 30px;
-  color: black;
+  color: var(--pink);
 }
 
 .card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px;
 
   .headline {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0px;
 
-    .name>h1 {
+    .name > h1 {
       font-size: 50px;
     }
-
   }
 
   .summary {
@@ -82,7 +81,6 @@ p, li, h1 {
 
     p {
       font-size: 30px;
-      margin: 0px;
     }
 
     @media (min-width: 750px) {
@@ -107,11 +105,12 @@ p, li, h1 {
       max-width: 600px;
       padding: 20px;
 
-      .name>h3 {
+      .name > h3 {
         font-size: 40px;
+        color: var(--yellow);
       }
 
-      .explanation>p {
+      .explanation > p {
         font-size: 30px;
       }
     }
