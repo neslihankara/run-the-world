@@ -3,8 +3,8 @@ services:
   frontend:
     image: frontend
     build:
-      dockerfile: dev.Dockerfile
+      dockerfile: Dockerfile
   backend:
     image: backend
     build:
-      dockerfile: dev.Dockerfile
+      dockerfile: Dockerfile
