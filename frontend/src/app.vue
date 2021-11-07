@@ -37,16 +37,21 @@ export default {
 </template>
 
 <style lang="scss">
+:root {
+  --navy: rgb(42, 9, 68);
+  --purple: rgb(59, 24, 95);
+  --pink: rgb(161, 37, 104);
+  --yellow: rgb(254, 194, 96);
+  --white: hsl(0, 0%, 91%);
+}
 #app {
   font-family: 'Teko', sans-serif;
-  // background: rgb(102, 100, 100);
-  background: rgb(255, 255, 255);
+  background: var(--navy);
   padding: 30px;
 
   a {
     text-decoration: none;
   }
-
 }
 
 .navbar-wrapper {
@@ -61,7 +66,7 @@ export default {
   font-size: 23px;
 
   .link {
-    color: black;
+    color: var(--yellow);
   }
 
   @media (min-width: 750px) {
