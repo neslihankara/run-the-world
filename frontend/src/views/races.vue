@@ -22,13 +22,19 @@ export default {
 <template lang="pug">
 .container
   .row
-    div(v-for="race in races")
+    .col(v-for="race in races")
       .race
         RaceCard(:race="race" v-if="race")
 </template>
 
 <style scoped>
-.race {
-  max-width: 400px;
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.col {
+  margin: 10px;
 }
 </style>
