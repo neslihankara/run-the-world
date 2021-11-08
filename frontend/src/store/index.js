@@ -32,14 +32,16 @@ const mutations = {
   SET_USER: 'set user',
   SET_LIVE_STREAM: 'set live stream',
   ADD_LIVE_STREAM: 'add live stream',
-  ADD_MESSAGE_TO_LIVE_STREAM: 'add message to live stream'
+  ADD_MESSAGE_TO_LIVE_STREAM: 'add message to live stream',
+  ADD_ONLINE_USER: 'add online user'
 }
 
 const store = new Vuex.Store({
   state: {
     user: null,
+    onlineUsers: null,
     currentLiveStream: null,
-    liveStreams: [],
+    liveStreams: new Set(),
     liveStreamMessages: []
   },
   mutations: {
@@ -53,10 +55,13 @@ const store = new Vuex.Store({
       state.currentLiveStream = live
     },
     [mutations.ADD_LIVE_STREAM](state, stream) {
-      state.liveStreams.push(stream)
+      state.liveStreams.add(stream)
     },
     [mutations.ADD_MESSAGE_TO_LIVE_STREAM](state, message) {
       state.liveStreamMessages.push(message)
+    },
+    [mutations.ADD_ONLINE_USER](state) {
+      state.onlineUsers.push(state.user)
     }
   },
   actions: {

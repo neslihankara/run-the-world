@@ -25,8 +25,9 @@ const raceSchema = new mongoose.Schema({
     type: String, // ENUM
     required: true,
   },
-  startTime: {
-    type: String, // should be date
+  startDate: {
+    type: Date,
+    required: true,
   },
   attendances: [
     {

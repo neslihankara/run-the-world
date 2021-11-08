@@ -1,5 +1,5 @@
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import RaceCard from '@/components/race-card.vue'
 
 export default {
@@ -15,6 +15,9 @@ export default {
   },
   methods: {
     ...mapActions(['fetchRaces'])
+  },
+  computed: {
+    ...mapState(['user'])
   }
 }
 </script>
@@ -31,7 +34,7 @@ export default {
 .row {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 .col {

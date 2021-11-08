@@ -29,7 +29,7 @@ export default {
           router-link.link(to="/create-race") Create Race
           router-link.link(to="/live-chat") People
           router-link.link(to="/register" v-if="!user") Register
-          router-link.link(to="/login" v-if="!user") Login
+          router-link.link(to="/login" v-if="!user") Log In
           router-link.link(v-if="user" to="/profile") Profile
           a.link(@click="doLogout" to="/" v-if="user") Log out
     router-view
@@ -68,8 +68,13 @@ export default {
     color: var(--yellow);
   }
 
-  @media (min-width: 750px) {
+  @media (min-width: 768px) {
     font-size: 40px;
   }
+}
+
+.v-popper-shown {
+  background: var(--yellow);
+  z-index: 9999;
 }
 </style>
