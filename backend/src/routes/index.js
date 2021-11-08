@@ -45,7 +45,8 @@ router.get('/initialize', async (req, res) => {
     requiredRunnerAge: 25,
     requiredRunnerGender: 'f',
     runners: [],
-    createdBy: User.id,
+    createdBy: nes.id,
+    ownerName: nes.name,
   })
 
   await nes.createRace(raceFast)

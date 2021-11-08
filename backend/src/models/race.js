@@ -39,6 +39,7 @@ const raceSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
+  ownerName: String,
 })
 class Race {
   async admit(user) {
