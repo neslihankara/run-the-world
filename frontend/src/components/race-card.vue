@@ -18,6 +18,9 @@ export default {
       } catch (err) {
         alert(err.response.data.message)
       }
+    },
+    goToProfile() {
+      this.$router.push(`/users/${this.race.createdBy}`)
     }
   },
   computed: {
@@ -37,38 +40,40 @@ export default {
           .race-name
             h4.card-title {{ race.name }}
           .info
-            .info-item
+            .info-item(v-tooltip="'Destination'")
               i.fas.fa-angle-double-right
               p {{ race.kilometers }} km
-            .info-item
+            .info-item(v-tooltip="'Age'")
               i.fas.fa-birthday-cake
               p {{ race.requiredRunnerAge }}
-            .info-item
+            .info-item(v-tooltip="'Gender'")
               i.fas.fa-genderless
               p {{ race.requiredRunnerGender }}
-            .info-item
+            .info-item(v-tooltip="'Terrain'")
               i.fas.fa-road
               p {{  race.terrain }}
-            .info-item
+            .info-item(v-tooltip="'Date/Time'")
               i.fas.fa-calendar-week
               p {{ race.startTime }}
         .buttons
           .apply
             button.btn(@click='apply' :disabled="race.attendances.some(attendance => attendance.user._id == user._id)") Apply
           .result
-            button.btn(href='/') Results
+            a.btn(href='#') Results
           .owner
-            button.btn(href='/') {{ race.createdBy }}
+            button.btn(@click='goToProfile') {{ race.ownerName }}
 
   </template>
 
 <style lang="scss" scoped>
 .container {
   border-radius: 8px;
+  border: var(--yellow) solid 2px;
   background: var(--white);
   p {
     font-size: 22px;
     color: var(--pink);
+    /* margin: 20px; */
   }
 }
 .race-info {
@@ -91,7 +96,6 @@ export default {
       border-bottom: solid var(--purple);
       border-radius: 8px;
       padding: 5px;
-      line-height: 0px;
       background: pink;
       text-align: center;
     }
@@ -103,6 +107,9 @@ export default {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-auto-flow: column;
+  a {
+    display: inline-block;
+  }
 
   .btn {
     border: 0px;
@@ -112,6 +119,7 @@ export default {
     padding: 0.5rem;
     margin: 0.5rem;
     color: var(--purple);
+    cursor: pointer;
   }
 
   .owner {
