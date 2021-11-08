@@ -1,9 +1,16 @@
 const express = require('express')
 const passport = require('passport')
-const { celebrate, Joi, errors, Segments } = require('celebrate')
+const { celebrate, Joi, Segments } = require('celebrate')
 const User = require('../models/user')
 
 const router = express.Router()
+
+// eslint-disable-next-line consistent-return
+function ensureLogin(req, res, next) {
+  if (req.user) return next()
+
+  next(new Error('Unauthorized'))
+}
 
 router.get('/session', (req, res) => {
   res.send(req.user)
@@ -36,7 +43,8 @@ router.post('/session', passport.authenticate('local', { failWithError: true }),
   res.send(req.user)
 })
 
-router.delete('/session', async (req, res, next) => {
+router.delete('/session', ensureLogin, async (req, res, next) => {
+  console.log('im here cinim')
   await req.logout()
 
   req.session.regenerate(err => {

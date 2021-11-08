@@ -26,12 +26,12 @@ export default {
         .navbar#navbar
           router-link.link(to="/") Run the World
           router-link.link(to="/races") Races
-          //- router-link.link(to="/create-race") Create Race
+          router-link.link(to="/create-race") Create Race
           router-link.link(to="/live-chat") People
-          router-link.link(v-if="!user" to="/register") Register
-          router-link.link(v-if="!user" to="/login") Login
-          router-link.link(v-if="user" @click="doLogout" to="/") Logout
-          router-link.link(to="/profile") Profile
+          router-link.link(to="/register" v-if="!user") Register
+          router-link.link(to="/login" v-if="!user") Login
+          router-link.link(v-if="user" to="/profile") Profile
+          a.link(@click="doLogout" to="/" v-if="user") Log out
     router-view
 </template>
 
