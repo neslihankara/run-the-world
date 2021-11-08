@@ -57,6 +57,7 @@ li,
 h1 {
   font-size: 30px;
   color: var(--pink);
+  margin: 0px;
 }
 
 .card {
@@ -83,7 +84,7 @@ h1 {
       font-size: 30px;
     }
 
-    @media (min-width: 750px) {
+    @media (min-width: 768px) {
       p {
         font-size: 40px;
       }
@@ -115,14 +116,14 @@ h1 {
       }
     }
 
-    @media (min-width: 750px) {
+    @media (min-width: 768px) {
       display: grid;
       grid-template-columns: 50% 50%;
       grid-column-gap: 1em;
     }
   }
 
-  @media (min-width: 750px) {
+  @media (min-width: 768px) {
     p {
       font-size: 50px;
     }

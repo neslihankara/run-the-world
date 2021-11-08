@@ -30,7 +30,7 @@ router.post('/', ensureLogin, async (req, res) => {
     terrain: req.body.terrain,
     requiredRunnerAge: req.body.requiredRunnerAge,
     requiredRunnerGender: req.body.requiredRunnerGender,
-    startTime: req.body.startTime,
+    startDate: req.body.startDate,
     createdBy: req.user.id,
     ownerName: req.user.name,
   }

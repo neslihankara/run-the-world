@@ -6,7 +6,8 @@ export default {
   props: ['race'],
   data() {
     return {
-      defaultDescription: 'Not defined'
+      defaultDescription: 'Not defined',
+      msg: 'Destination'
     }
   },
   methods: {
@@ -39,22 +40,24 @@ export default {
         .race-info
           .race-name
             h4.card-title {{ race.name }}
+          <hr>
           .info
             .info-item(v-tooltip="'Destination'")
-              i.fas.fa-angle-double-right
+              i.fas.fa-angle-double-right.fa-lg(style="color: rgb(59, 24, 95); margin-bottom: 10px")
               p {{ race.kilometers }} km
             .info-item(v-tooltip="'Age'")
-              i.fas.fa-birthday-cake
+              i.fas.fa-birthday-cake.fa-lg(style="color: rgb(59, 24, 95); margin-bottom: 10px")
               p {{ race.requiredRunnerAge }}
             .info-item(v-tooltip="'Gender'")
-              i.fas.fa-genderless
+              i.fas.fa-genderless.fa-lg(style="color: rgb(59, 24, 95); margin-bottom: 10px")
               p {{ race.requiredRunnerGender }}
             .info-item(v-tooltip="'Terrain'")
-              i.fas.fa-road
+              i.fas.fa-road.fa-lg(style="color: rgb(59, 24, 95); margin-bottom: 10px")
               p {{  race.terrain }}
             .info-item(v-tooltip="'Date/Time'")
-              i.fas.fa-calendar-week
-              p {{ race.startTime }}
+              i.fas.fa-calendar-week.fa-lg(style="color: rgb(59, 24, 95); margin-bottom: 10px")
+              p {{ new Date(race.startDate).toLocaleString() }}
+          <hr>
         .buttons
           .apply
             button.btn(@click='apply' :disabled="race.attendances.some(attendance => attendance.user._id == user._id)") Apply
@@ -62,19 +65,19 @@ export default {
             a.btn(href='#') Results
           .owner
             button.btn(@click='goToProfile') {{ race.ownerName }}
-
   </template>
 
 <style lang="scss" scoped>
 .container {
   border-radius: 8px;
-  border: var(--yellow) solid 2px;
+  border: var(--navy) solid 2px;
   background: var(--white);
   p {
     font-size: 22px;
     color: var(--pink);
-    /* margin: 20px; */
   }
+  box-shadow: rgba(250, 250, 250, 0.35) 2px 5px 20px;
+  max-width: 400px;
 }
 .race-info {
   .race-name {
@@ -85,6 +88,7 @@ export default {
       margin-bottom: 20px;
     }
   }
+
   .info {
     display: grid;
     grid-template: column;
@@ -98,6 +102,11 @@ export default {
       padding: 5px;
       background: pink;
       text-align: center;
+    }
+
+    i {
+      background: var(--yellow);
+      margin-bottom: 50px;
     }
   }
 }
@@ -120,6 +129,9 @@ export default {
     margin: 0.5rem;
     color: var(--purple);
     cursor: pointer;
+    width: 50px;
+    text-align: center;
+    font-size: 25px;
   }
 
   .owner {

@@ -1,5 +1,6 @@
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
+import { format } from 'date-fns'
 
 export default {
   name: 'CreateRace',
@@ -12,9 +13,10 @@ export default {
         terrain: null,
         requiredRunnerAge: null,
         requiredRunnerGender: null,
-        startTime: null,
+        startDate: null,
         runners: [],
-        createdBy: null
+        createdBy: null,
+        ownerName: null
       },
 
       backendError: null
@@ -30,9 +32,10 @@ export default {
           terrain: this.race.terrain,
           requiredRunnerAge: this.race.requiredRunnerAge,
           requiredRunnerGender: this.race.requiredRunnerGender,
-          startTime: this.race.startTime,
+          startDate: new Date(this.race.startDate),
           runners: this.race.runners,
-          createdBy: this.race.createdBy //users[0] maybe?
+          createdBy: this.race.createdBy,
+          ownerName: this.user.name
         })
 
         this.$router.push('/races') // this should return to specific race's page maybe with `/${this.raceId}`
@@ -40,42 +43,89 @@ export default {
         this.backendError = err.message
       }
     }
+  },
+  computed: {
+    ...mapState(['user'])
   }
 }
 </script>
 
 <template lang="pug">
-div
+div.race-form
+  h1 Create your race and share it with your friends!
   form(@submit.prevent="submitRace")
-    h1 Create a new race
-    label(for="name") Name:&nbsp;
-      input(v-model="race.name" id="name" type="text" placeholder="Race's name" required)
-    label(for="kilometers") Kilometers:&nbsp;
-      input(v-model="race.kilometers" id="kilometers" type="number" placeholder="Race's length" required)
-    label(for="terrain") Terrain:&nbsp;
-      input(v-model="race.terrain" id="terrain" type="text" placeholder="Race's terrain type" required)
-    label(for="requiredRunnerGender") Gender:&nbsp;
-      input(v-model="race.requiredRunnerGender" id="requiredRunnerGender" type="text" placeholder="Race's specificity" required)
-    label(for="requiredRunnerAge") Age:&nbsp;
-      input(v-model="race.requiredRunnerAge" id="requiredRunnerAge" type='number' placeholder="Race's age span" required)
-    label(for="startTime") Starting time:&nbsp;
-      input(v-model="race.startTime" id="startTime" type="text" placeholder="Race's start time" required)
-    button(type="submit") Create
+    label.race-label(for="name") Name:&nbsp;
+      input(v-model="race.name" id="name" type="text" required)
+    label.race-label(for="kilometers") Kilometers:&nbsp;
+      input(v-model="race.kilometers" id="kilometers" type="number" required)
+    label.race-label(for="terrain") Terrain:&nbsp;
+      input(v-model="race.terrain" id="terrain" type="text" required)
+    label.race-label(for="requiredRunnerGender") Gender:&nbsp;
+      input(v-model="race.requiredRunnerGender" id="requiredRunnerGender" type="text" required)
+    label.race-label(for="requiredRunnerAge") Min. age:&nbsp;
+      input(v-model="race.requiredRunnerAge" id="requiredRunnerAge" type='number' required)
+    label.race-label(for="startDate") Starting date and time:&nbsp;
+      input.date-time(v-model="race.startDate" id="startDate" type="datetime-local" required style="")
+    button.btn(type="submit") Create
   .text-error(v-if="backendError") {{ backendError }}&nbsp;
     p Make sure you are logged in.
-  div
+  .foot-note
     | Looking for a race?&nbsp;
     router-link(to="/races") Browse races
 </template>
 
 <style lang="scss" scoped>
+.race-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+  text-align: center;
+
+  h1 {
+    font-size: 50px;
+  }
+
+  .race-label {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .foot-note {
+    margin-top: 40px;
+    font-size: 40px;
+
+    a {
+      color: var(--yellow);
+    }
+  }
+
+  button {
+    background-color: var(--yellow);
+  }
+}
+
 label {
   display: block;
   margin: 1rem 0;
+
+  input {
+    width: 100%;
+    border: 1px solid var(--yellow);
+    font-size: 20px;
+    border-radius: 8px;
+    background: none;
+    color: var(--yellow);
+  }
 }
 
 .text-error {
-  color: red;
+  color: white;
   font-weight: bold;
+  margin: 20px;
 }
 </style>
