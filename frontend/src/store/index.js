@@ -37,7 +37,6 @@ const mutations = {
 
 const store = new Vuex.Store({
   state: {
-    count: 0,
     user: null,
     currentLiveStream: null,
     liveStreams: [],
@@ -61,11 +60,11 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-    incrementCount({ commit }) {
-      // do whatever you want
-      // decide on what mutation you want to commit to the store
-      commit(mutations.INCREMENT_COUNT, 444)
-    },
+    // incrementCount({ commit }) {
+    //   // do whatever you want
+    //   // decide on what mutation you want to commit to the store
+    //   commit(mutations.INCREMENT_COUNT, 444)
+    // },
     async fetchUser(store, id) {
       // why did we delete {this.$route.params.id} from get?
       const userRequest = await axios.get(`/api/users/${id}`)
@@ -113,6 +112,7 @@ const store = new Vuex.Store({
     },
     async logout({ commit }) {
       await axios.delete('/api/account/session')
+
       commit(mutations.SET_USER, null)
     },
     async register(store, user) {

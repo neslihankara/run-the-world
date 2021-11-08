@@ -3,6 +3,7 @@ const Race = require('../models/race')
 
 const router = express.Router()
 
+// eslint-disable-next-line consistent-return
 function ensureLogin(req, res, next) {
   if (req.user) return next()
 
@@ -15,7 +16,7 @@ router.get('/', ensureLogin, async (req, res) => {
   res.send(races)
 })
 
-router.get('/:raceId', async (req, res) => {
+router.get('/:raceId', ensureLogin, async (req, res) => {
   const race = await Race.findById(req.params.raceId)
 
   if (race) res.send(race)
@@ -30,6 +31,8 @@ router.post('/', ensureLogin, async (req, res) => {
     requiredRunnerAge: req.body.requiredRunnerAge,
     requiredRunnerGender: req.body.requiredRunnerGender,
     startTime: req.body.startTime,
+    createdBy: req.user.id,
+    ownerName: req.user.name,
   }
 
   const createdRace = await Race.create(raceToCreate)
