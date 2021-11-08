@@ -10,63 +10,9 @@ router.get('/', (req, res) => {
   res.render('index', { title: 'run the world' })
 })
 
-const mockRaces = [
-  Race.create({
-    name: 'marathon-A',
-    kilometers: 26,
-    terrain: 'road',
-    requiredRunnerAge: 23,
-    requiredRunnerGender: 'm',
-    runners: [],
-    createdBy: User.id,
-  }),
-  Race.create({
-    name: 'race-B',
-    kilometers: 5,
-    terrain: 'trail',
-    requiredRunnerAge: 22,
-    requiredRunnerGender: 'f',
-    runners: [],
-    createdBy: User.id,
-  }),
-  Race.create({
-    name: 'race-D',
-    kilometers: 10,
-    terrain: 'road',
-    requiredRunnerAge: 30,
-    requiredRunnerGender: 'f',
-    runners: [],
-    createdBy: User.id,
-  }),
-]
-
 // tba: the races that have the user whose isCreator property is true for that race in the races array
 router.get('/profile', (req, res) => {
-  const createdRaces = [
-    Race.create({
-      name: 'marathon-C',
-      kilometers: 42,
-      terrain: 'road',
-      requiredRunnerAge: 25,
-      requiredRunnerGender: 'f',
-      runners: [],
-      createdBy: User.id,
-    }),
-  ]
-
-  const attemptedRaces = [
-    Race.create({
-      name: 'marathon-E',
-      kilometers: 23,
-      terrain: 'road',
-      requiredRunnerAge: 25,
-      requiredRunnerGender: 'f',
-      runners: [],
-      createdBy: User.id,
-    }),
-  ]
-
-  res.render('profile', { createdRaces, admittedRaces: mockRaces, attemptedRaces })
+  res.render('profile')
 })
 
 router.get('/browse', async (req, res) => {
